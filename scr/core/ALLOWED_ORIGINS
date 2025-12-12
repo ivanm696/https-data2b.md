@@ -1,0 +1,19 @@
+from pydantic import BaseSettings
+
+# Класс настроек, который автоматически считывает переменные окружения
+class Settings(BaseSettings):
+    # Настройки Базы Данных (БД)
+    DATABASE_FILE: str = "data/data2b_firms.db"
+    DATABASE_URL: str = f"sqlite:///{DATABASE_FILE}"
+    
+    # Настройки CORS (для связи с вашим сайтом data2b.md)
+    ALLOWED_ORIGINS: list[str] = [
+        "https://www.data2b.md",        # Разрешаем главный домен
+        "https://www.data2b.md/ro/profile", # Разрешаем профиль
+        "http://localhost",
+        "http://localhost:8000",
+        "http://127.0.0.1",
+    ]
+
+# Создаем единственный экземпляр настроек, который будет использоваться во всем приложении
+settings = Settings()
