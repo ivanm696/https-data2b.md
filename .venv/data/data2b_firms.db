@@ -1,1 +1,2 @@
-
+# Открываем базу данных
+sqlite3 data2b_firms.db
